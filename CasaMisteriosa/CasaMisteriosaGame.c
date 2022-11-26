@@ -134,9 +134,6 @@ int main(int argc, char** argv) {
             printf("\n- este");
         if (habitaciones[habitacionActual].oeste != 0)
             printf("\n- oeste");
-        if (vueltas == 1) 
-            printf("\nEj. Moverse: \"ir sur\" ");
-        
         
         // Leer que quiere el jugador
         printf("\n>> ");
@@ -253,7 +250,6 @@ int main(int argc, char** argv) {
                 printf("\n((No puedes ir hacia alli))");
         }
 
-        vueltas++;
     }
 
     getchar();
