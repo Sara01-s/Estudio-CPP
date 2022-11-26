@@ -83,7 +83,7 @@ void MostrarComandos() {
     printf("\nNum Habitacion:    mostrar habitacion");
     printf("\nZoom:              Ctrl + Rueda mouse");
     printf("\nMostrar ayuda:     mostrar ayuda");
-    printf("\nVersion: v1.2.0 -- (c) Sara San Martin 2022");
+    printf("\nVersion: v1.4.0 -- (c) Sara San Martin 2022");
 }
 
 
@@ -177,9 +177,10 @@ int main(int argc, char** argv) {
                     TomarObjeto(&objetos[LLAVE], 1);
                     printf("\n((Das la espalda a la puerta y usas la escalera para subir, logras alcanzar la llave y tomarla.))");
                 }
-                else {
-                    printf("\n((La llaves esta demasiado alta, no puedes alcanzarla.))");
-                }
+            }
+            else if (!strcmp(nombreObjeto, "llave") && objetos[LLAVE].habitacion == habitacionActual) {
+                accion = 1;
+                printf("\n((La llaves esta demasiado alta, no puedes alcanzarla.))");
             }
 
             // Escaleras
@@ -262,6 +263,4 @@ int main(int argc, char** argv) {
         }
 
     }
-
-    getchar();
 }
