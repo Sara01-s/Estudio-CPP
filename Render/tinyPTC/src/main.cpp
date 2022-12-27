@@ -12,9 +12,15 @@ constexpr uint32_t B = 0x000000FF;                      // blue  hex
 
 uint32_t _window[640 * 360];
 
-uint32_t _sprite[3*2] = {
-    R, G, B, 
-    R, G, G
+uint32_t _sprite[8*8] = {
+    G, G, G, G, G, G, G, G,
+    G, B, R, R, R, R, B, G,
+    G, B, R, G, G, G, B, G,
+    G, B, B, R, G, G, B, G,
+    G, B, B, B, R, R, B, G,
+    G, B, B, B, B, R, B, G,
+    G, B, R, R, R, G, B, G,
+    G, G, G, G, G, G, G, G
 };
 
 int main() {
@@ -23,14 +29,14 @@ int main() {
 
     for(;;) {
         for (uint32_t i = 0; i < 640*360; ++i) {
-            _window[i] = 0x00FF0000;
+            _window[i] = R;
         }
 
         uint32_t* screenPtr = _window;
         uint32_t* spritePtr = _sprite;
 
-        for (uint32_t i=0; i < 4; ++i) {
-            for (uint32_t j=0; j < 4; ++j) {
+        for (uint32_t i=0; i < 8; ++i) {
+            for (uint32_t j=0; j < 8; ++j) {
 
                 *screenPtr = *spritePtr;
 
