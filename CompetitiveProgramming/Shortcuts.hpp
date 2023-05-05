@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <numeric>
 #include <iostream>
+#include <string>
 using namespace std;
 
 typedef long long           ll;
