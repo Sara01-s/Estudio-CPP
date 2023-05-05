@@ -2,19 +2,20 @@
 
 // 0 <= strlen <= 100
 string checkNickGender(const string& nick) {
-    int distinct_chars = 0;
+
+    unordered_map<int, char> last_chars;
 
     for (int i = 0; i < nick.length(); ++i) {
-        for (int j = 0; j < nick.length(); ++j) {
-            if (i != j) {
-                if (nick[i] == nick[j]) {
-                    ++distinct_chars;
-                }
-            }
+        if (last_chars.find(i) == last_chars.end()) {
+            cout << last_chars[i] << endl;
+        }
+        else {
+            last_chars.emplace(i, nick[i]);
         }
     }
 
-    return (distinct_chars % 2 == 0) ? "CHAT WITH HER!" : "IGNORE HIM!";
+    cout << last_chars.size() << endl;
+    return (last_chars.size() % 2 == 0) ? "CHAT WITH HER!" : "IGNORE HIM!";
 }
 
 int main() {
