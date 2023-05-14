@@ -1,32 +1,39 @@
-#include "Shortcuts.hpp"
+#include <vector>
+#include <utility>
+#include <algorithm>
+#include <numeric>
+#include <iostream>
+#include <string>
+#include <unordered_map>
+using namespace std;
+
+typedef long long           ll;
+typedef pair<int, int>      ii;
+typedef vector<int>         vi;
+typedef vector<ii>          vii;
+#define INF                 1_000_000_000
 
 // 0 <= strlen <= 100
 string checkNickGender(const string& nick) {
-
-    unordered_map<int, char> last_chars;
-
+    unordered_map<char, bool> last_chars{};
+    // numero par de caracteres unicos => mujer
     for (int i = 0; i < nick.length(); ++i) {
-        if (last_chars.find(i) == last_chars.end()) {
-            cout << last_chars[i] << endl;
-        }
-        else {
-            last_chars.emplace(i, nick[i]);
+        if (last_chars.find(i) != last_chars.end()) {
+            // se encontro el caracter
+            // hacemos nada
+        } else {
+            char newchar = nick[i];
+            // no se encontro, por lo tanto, define un caracter unico, se agrega
+            last_chars[newchar] = true;
         }
     }
-
-    cout << last_chars.size() << endl;
     return (last_chars.size() % 2 == 0) ? "CHAT WITH HER!" : "IGNORE HIM!";
 }
 
-int main() {
-
-    string case_1 = "wjmzbmr";      // YES 6c/d
-    string case_2 = "xiaodao";      // NO  5c/d
-    string case_3 = "sietekplus";   // YES 8c/d
-
-    cout << checkNickGender(case_1) << endl;
-    cout << checkNickGender(case_2) << endl;
-    cout << checkNickGender(case_3) << endl;
+int main(void) {
+    string input{};
+    cin >> input;
+    cout << checkNickGender(input);
 
     return 0;
 }
